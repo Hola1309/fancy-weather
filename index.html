@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="./index.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { top: 0; bottom: 0; width: 300px; height: 300px; }
+    </style>
+</head>
+<body id="body">
+    <div><input type="button"  value="BG" onclick="setBackgroungImg()">
+        <input type="button" value="F" onclick="celsius=0; setTemp()">
+        <input type="button" value="C" onclick="celsius=1; setTemp()">
+        <input type="text" placeholder="Search" id="searchValue"><input type="button">
+        <input type="button" value="Go" onclick="city=document.getElementById('searchValue').value; weatherSearch(city)">
+    </div><hr>
+    <div id="map"></div>
+    <div id="mainInfo">
+        <span id="city"></span>
+        <span id="country"></span>
+        <span id="day"></span>
+        <img src="" id="weatherimg">
+        <span id="weather"></span>
+        <span id="temp"></span>
+    </div>
+    <div>
+        <span id="day"></span><img src="" id="weatherimg"><span id="weather"></span><span id="temp"></span>
+    </div>
+    <div>
+        <span id="day"></span><img src="" id="weatherimg"><span id="weather"></span><span id="temp"></span>
+    </div>
+    <div>
+        <span id="day"></span><img src="" id="weatherimg"><span id="weather"></span><span id="temp"></span>
+    </div>
+</body>
+
+</html>
