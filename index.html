@@ -14,29 +14,35 @@
     </style>
 </head>
 <body id="body">
-    <div><input type="button"  value="BG" onclick="setBackgroungImg()">
-        <input type="button" value="F" onclick="celsius=0; setTemp()">
-        <input type="button" value="C" onclick="celsius=1; setTemp()">
-        <input type="text" placeholder="Search" id="searchValue"><input type="button">
-        <input type="button" value="Go" onclick="city=document.getElementById('searchValue').value; weatherSearch(city)">
+    <div><input type="button"  value="Switch Backgroung Img" src="/assets/reload.png" onclick="setBackgroungImg()">
+        <input type="button" value="°F" onclick="celsius=0; setTemp()">
+        <input type="button" value="°С" onclick="celsius=1; setTemp()">
+        <input type="text" placeholder="Search Field" id="searchValue"><input type="button">
+        <input type="button" value="Search" onclick="city=document.getElementById('searchValue').value; initSearch(city)">
     </div><hr>
     <div id="map"></div>
     <div id="mainInfo">
-        <span id="city"></span>
-        <span id="country"></span>
-        <span id="day"></span>
-        <img src="" id="weatherimg">
+        <span id="city"></span>,
+        <span id="country"></span><br>
+        <span id="day"></span>,
+        <span id="datetime"></span>
+        <br><img src="" id="weatherimg"><br>
         <span id="weather"></span>
         <span id="temp"></span>
     </div>
+    <div id="wrapper">
     <div>
-        <span id="day"></span><img src="" id="weatherimg"><span id="weather"></span><span id="temp"></span>
+        <span id="day"></span>,
+        <span id="datetime"></span><br><img src="" id="weatherimg"><br><span id="weather"></span><br><span id="temp"></span>
     </div>
     <div>
-        <span id="day"></span><img src="" id="weatherimg"><span id="weather"></span><span id="temp"></span>
+        <span id="day"></span>,
+        <span id="datetime"></span><br><img src="" id="weatherimg"><br><span id="weather"></span><br><span id="temp"></span>
     </div>
     <div>
-        <span id="day"></span><img src="" id="weatherimg"><span id="weather"></span><span id="temp"></span>
+        <span id="day"></span>,
+        <span id="datetime"></span><br><img src="" id="weatherimg"><br><span id="weather"></span><br><span id="temp"></span>
+    </div>
     </div>
 </body>
 

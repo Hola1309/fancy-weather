@@ -4,6 +4,7 @@ var myWeather;
 var bgimg;
 var city;
 let celsius = 1;
+var search;
 // https://www.weatherbit.io/static/img/icons/c01d.png        icons
 fetch('https://ipinfo.io?token=25085b57ba9953')
     .then(response => response.json())
@@ -21,12 +22,15 @@ var date = new Date();
 // час в текущей временной зоне
 // alert( days[date.getDay()%7] );
 // alert( date.getHours()+':'+date.getMinutes()+':'+date.getSeconds() );
+function initSearch(city){
+    search = `city=${city}`;
+    weatherSearch(search)
+}
 
-
-function weatherSearch(city){
-    fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&days=4&lang=en&key=bec3007bca594698a77b75a755839878`)
-    .then(response => response.json())
-    .then(commits => weatherData(commits));
+function weatherSearch(search){
+    fetch(`https://api.weatherbit.io/v2.0/forecast/daily?${search}&days=4&lang=en&key=bec3007bca594698a77b75a755839878`)
+    .then(response => response.json()).catch(function(e) {alert('Incorrect request\n' + e);})
+    .then(commits => weatherData(commits))
 }
 
 
@@ -40,7 +44,7 @@ zoom: 9 // starting zoom
 
 function fill(){
     document.querySelectorAll('#day')[0].innerText = days[date.getDay()%7];
-
+    
 }
 
 function Weather(){
@@ -48,6 +52,7 @@ function Weather(){
     document.getElementById('country').innerText = myWeather.country_code;
     for(i=0; i<4; i++){
     document.querySelectorAll('#day')[i].innerText = days[(date.getDay() +i)%7];
+    document.querySelectorAll('#datetime')[i].innerText = myWeather.data[i].datetime;
     document.querySelectorAll('#weatherimg')[i].src = `https://www.weatherbit.io/static/img/icons/${myWeather.data[i].weather.icon}.png`;
     document.querySelectorAll('#weather')[i].innerText = myWeather.data[i].weather.description; //myWeather.data[0].weather.description;
     
@@ -71,18 +76,25 @@ function weatherData(commits){
 }
 function localData(commits){
     myLocal = commits;
+    onload()
     fill()
+    
 }
 function setTemp(){
     if (celsius){
         for (i=0; i<4; i++){
-            document.querySelectorAll('#temp')[i].innerText = `${+myWeather.data[i].min_temp} - ${+myWeather.data[i].max_temp}`;
+            document.querySelectorAll('#temp')[i].innerText = `${+myWeather.data[i].min_temp} °С - ${+myWeather.data[i].max_temp} °С`;
             }
     } else {
         for (i=0; i<4; i++){
-            document.querySelectorAll('#temp')[i].innerText = `${(+myWeather.data[i].min_temp*9/5)+32} - ${(+myWeather.data[i].max_temp*9/5)+32}`;
+            document.querySelectorAll('#temp')[i].innerText = `${(+myWeather.data[i].min_temp*9/5)+32} °F - ${(+myWeather.data[i].max_temp*9/5)+32} °F`;
             }
     }
     
 }
-setTemp()
+
+
+function onload(){
+    search = `postal_code=${myLocal.postal}`
+    weatherSearch(search)
+}

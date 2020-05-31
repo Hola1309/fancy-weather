@@ -3,7 +3,8 @@ body{
     height: 100vh;
     background-size: cover;
     background-color: black;
-    color: blanchedalmond;
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
 }
 textarea{
     resize: none;
@@ -15,4 +16,33 @@ input{
     padding: 0px;
     border: none;  
     margin-right: 10px;
+}
+#wrapper {
+    margin: auto;
+    margin-top: 140px;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    margin-left: 70px;
+
+    
+}
+#map{
+    float: left;
+    margin-left: 70px;
+    margin-top: 70px;
+}
+#mainInfo{
+    margin-left: 440px;
+    width: 300px;
+    margin-top: 78px;
+}
+img{
+    margin: auto;
+}
+#reloadbg{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
